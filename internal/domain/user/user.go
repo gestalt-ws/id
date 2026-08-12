@@ -15,3 +15,12 @@ type User struct {
 	PrimaryEmail       string    `json:"primary_email"`
 	SecondaryEmail     string    `json:"secondary_email"`
 }
+
+// Memberships represent the relationships the user entity has to other
+// artifacts within the IAM hierarchy.
+type Memberships struct {
+	Demesne Demesne `json:"demesne"`
+	Realms  []Realm `json:"realms"`
+	Groups  []Group `json:"group"`
+	Roles   []Roles `json:"roles"`
+}
