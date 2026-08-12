@@ -1,6 +1,8 @@
 package user
 
 import (
+	"context"
+
 	"github.com/google/uuid"
 )
 
@@ -23,4 +25,12 @@ type Memberships struct {
 	Realms  []Realm `json:"realms"`
 	Groups  []Group `json:"group"`
 	Roles   []Roles `json:"roles"`
+}
+
+// Repository is the interface for database interactions pertaining to
+// the User entity.
+type Repository interface {
+	GetByID(ctx context.Context, id uuid.UUID) (User, error)
+	GetByUsername(ctx context.Context, username string) ([]User, error)
+	GetByFirstName(ctx context.Context, firstName string) ([]User, error)
 }
